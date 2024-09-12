@@ -1,0 +1,18 @@
+﻿@page "/random"
+@inject IJSRuntime JSRuntime
+
+<h3>Random Number Generator</h3>
+
+<p>Generated Random Number: @randomNumber</p>
+
+<button @onclick="GetRandomNumber">Generate Random Number</button>
+
+@code {
+    private int randomNumber;
+
+    private async Task GetRandomNumber()
+    {
+        // Call the JavaScript function 'generateRandomNumber' and get the result
+        randomNumber = await JSRuntime.InvokeAsync<int>("generateRandomNumber");
+    }
+}
